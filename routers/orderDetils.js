@@ -46,7 +46,6 @@ router.post('/save',(req,res)=>{
                         i++;
                   })
 
-                
              }); 
 
              
@@ -57,6 +56,25 @@ router.post('/save',(req,res)=>{
 
           }
 })
+
+
+
+router.get('/getAll',(req,res) => {
+      
+    try{
+      const getAll = "SELECT * FROM orderDetail";
+      connection.query(getAll,(err,result) => {
+             if(err) throw err;
+             res.send({code:200 , message:"Success" , data:result})
+      })
+         
+    }
+    catch(err){
+         res.send(err)
+    }
+})
+
+
 
 
 
