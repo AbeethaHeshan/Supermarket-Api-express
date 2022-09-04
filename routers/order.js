@@ -22,8 +22,27 @@ connection.connect((err)=>{
 
                  }); 
                 
-
            }
+
+router.post('/save',(req,res)=>{
+      
+         try{
+             
+            const id = req.body.id;
+            const custId = req.body.custId;
+            const date = req.body.date;
+            
+            const orderSaveQury = "INSERT INTO `Order` (orderid,custId,orderDate) VALUE('"+id+"','"+custId+"' ,'"+date+"')"
+            connection.query(orderSaveQury,(err,result)=> {
+                 if(err) throw err;
+                 res.send({code:200,message:result})
+            })
+         }catch(err){
+              res.send(err)
+         }
+
+})
+
 
 
 

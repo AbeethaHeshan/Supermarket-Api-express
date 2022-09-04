@@ -23,4 +23,26 @@ connection.connect((err)=>{
         }
 });
 
+
+router.post('/save',(req,res)=>{
+       
+       try{
+          
+        const id = req.body.id;
+        const description = req.body.description;
+        const quentity = req.body.quentity;
+        const unitPrice = req.body.unitPrice;
+           console.log(id);
+        const itemSaveQuery = `INSERT INTO item (itemId,description,quentity,unitprice) VALUES ('${id}','${description}','${quentity}','${unitPrice}')`
+        connection.query(itemSaveQuery,(err,result)=>{
+                  if(err) throw err;
+                  res.send({code:200 , message: result})
+        });
+        
+
+       }catch(err){
+           req.json(err);
+       }
+})
+
 module.exports = router;

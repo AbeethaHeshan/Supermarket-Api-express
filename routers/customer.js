@@ -8,7 +8,7 @@ const connection = mysql.createConnection(db.database)
 router.use(express.json())
 
 connection.connect(function(err) {
-   
+
     if(err){
 
        console.log("Error ");
@@ -27,6 +27,29 @@ connection.connect(function(err) {
         
          console.log("Database created"); 
     }
+});
+
+
+router.post('/save',(req,res)=>{
+                     
+      try{   
+          
+         const id = req.body.id;
+         const name = req.body.name;
+         const address = req.body.address;
+         const tel = req.body.tel;
+
+         const saveCustomerQuery = `INSERT INTO customer(id,name,address,tel) VALUES ('${id}' , '${name}' , '${address}' , '${tel}')` 
+         connection.query(saveCustomerQuery,(err,result)=>{
+               if(err) throw err;
+               res.send({code:200,message:result})
+         });
+
+      }catch(err){
+         res.json(err)
+      }
+                            
+       
 });
 
 
