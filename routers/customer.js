@@ -8,6 +8,7 @@ const connection = mysql.createConnection(db.database)
 router.use(express.json())
 
 connection.connect(function(err) {
+   
     if(err){
 
        console.log("Error ");
