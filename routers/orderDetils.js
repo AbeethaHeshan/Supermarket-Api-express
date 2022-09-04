@@ -41,7 +41,7 @@ router.post('/save',(req,res)=>{
                   connection.query(saveDetails,(err,result) => {
                         if(err) throw err;
                         if(i == lenth){
-                            res.json({code:200 , message : result })
+                            res.json({code:200 , message : "Success", data: result })
                         }
                         i++;
                   })

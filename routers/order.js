@@ -35,7 +35,7 @@ router.post('/save',(req,res)=>{
             const orderSaveQury = "INSERT INTO `Order` (orderid,custId,orderDate) VALUE('"+id+"','"+custId+"' ,'"+date+"')"
             connection.query(orderSaveQury,(err,result)=> {
                  if(err) throw err;
-                 res.send({code:200,message:result})
+                 res.send({code:200,message:"Success",data:result})
             })
          }catch(err){
               res.send(err)

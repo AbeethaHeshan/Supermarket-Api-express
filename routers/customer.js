@@ -42,7 +42,7 @@ router.post('/save',(req,res)=>{
          const saveCustomerQuery = `INSERT INTO customer(id,name,address,tel) VALUES ('${id}' , '${name}' , '${address}' , '${tel}')` 
          connection.query(saveCustomerQuery,(err,result)=>{
                if(err) throw err;
-               res.send({code:200,message:result})
+               res.send({code:200,message:"Success",data:result})
          });
 
       }catch(err){
@@ -50,6 +50,23 @@ router.post('/save',(req,res)=>{
       }
                             
        
+});
+
+
+
+router.get('/getAll',(req,res) => {
+          
+            try{
+               const getAll = "SELECT * FROM customer";
+               connection.query(getAll,(err,result) => {
+                      if(err) throw err;
+                      res.send({code:200 , message:"Success" ,data:result})
+               })
+                
+            }catch(err){
+                
+                res.send(err)
+            }
 });
 
 

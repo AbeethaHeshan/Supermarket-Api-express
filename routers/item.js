@@ -36,7 +36,7 @@ router.post('/save',(req,res)=>{
         const itemSaveQuery = `INSERT INTO item (itemId,description,quentity,unitprice) VALUES ('${id}','${description}','${quentity}','${unitPrice}')`
         connection.query(itemSaveQuery,(err,result)=>{
                   if(err) throw err;
-                  res.send({code:200 , message: result})
+                  res.send({code:200 , message: "Success" ,data:result})
         });
         
 
